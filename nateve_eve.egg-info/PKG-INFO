@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: nateve-eve
-Version: 0.0.1a0
+Version: 0.0.1a1
 Summary: Nateve tokenizer developed with python 3.8
 Home-page: https://github.com/NateveLang/Eve
 Author: Emmanuel Norambuena
 Author-email: eanorambuena@uc.cl
 License: MIT
-Download-URL: https://github.com/NateveLang/Eve/archive/v0.0.1a.tar.gz
+Download-URL: https://github.com/NateveLang/Eve/archive/v0.0.1a1.tar.gz
 Project-URL: Bug Reports, https://github.com/NateveLang/Eve/issues
 Project-URL: Source, https://github.com/NateveLang/Eve
 Keywords: development,quantum computing,programming language,nateve,natevelang,nate,education

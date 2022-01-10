@@ -1,4 +1,4 @@
-version = '0.0.1a'
+version = '0.0.1a1'
 
 import pathlib
 from setuptools import setup, find_packages

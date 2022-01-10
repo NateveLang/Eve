@@ -6,7 +6,6 @@ example1.myfileformat_file_saved.evelog
 setup.cfg
 setup.py
 eve/__init__.py
-eve/__main__.py
 eve/app.py
 eve/code.py
 eve/error.py
