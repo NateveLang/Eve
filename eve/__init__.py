@@ -1,7 +1,7 @@
 """
 __init__.py
 
-Initialization file for adam package.
+Initialization file for eve package.
 """
 
 author = "eanorambuena"

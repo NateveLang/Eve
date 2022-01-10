@@ -32,17 +32,11 @@ author_email = "eanorambuena@uc.cl"
 #	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #	SOFTWARE.
 
-import time
-
 from eve.file import       read_module
 from eve.lex import        scanner
-from eve.run import        driver_file
-from eve.semantic import   generator
 from eve.syntax import     parser
 
-vars_file = "adam/nateve_vars"
-
-def build(file, args = ["none"],  main = "", exceptions = "\tpass", driver = ""):
+def make_tree(file, args = ["none"]):
     """
 This function builds the source code.
 
@@ -55,10 +49,6 @@ It takes the following arguments:
 """
 
     dev_mode = "dev" in args
-    verbose_mode = ("-v" in args) or ("--verbose" in args)
-    display_status_mode = verbose_mode or dev_mode
-
-    start = time.time()
 
     text = read_module(file)
     file = file.split(".")[0]
@@ -66,54 +56,11 @@ It takes the following arguments:
     if text == None:
         text = ""
 
-    start_compilation = time.time()
-
     tokens, errors, lex_log, templates, modules = scanner(text, args)
     tree, tokens, errors = parser(tokens, file, errors)
-    errors = generator(tree, file, errors, main, exceptions, args, templates)
-
-    if display_status_mode:
-        now = time.time()
-        compilation_time = now - start_compilation
-
-        log = lex_log
-
-        if errors != 0:
-            stat = -1
-            
-        else:
-            stat = 0
-
-        print(f"Compilation finished with status {stat}")
-        
-        print(log, end = "")
 
     if dev_mode:
         print(tokens)
         tree.display()
 
-    if display_status_mode:
-        now = time.time()
-        runtime = now - start
-    
-        try:
-            f = open(vars_file)
-            miliseconds = f.read().strip()
-            f.close()
-
-        except:
-            miliseconds = "True"
-
-        if miliseconds == "True":
-            print(f"Machine time: {1000 * runtime} miliseconds")
-            print(f"Compilation time: {1000 * compilation_time} miliseconds\n")
-
-        else:
-            print(f"Machine time: {runtime} seconds")
-            print(f"Compilation time: {compilation_time} seconds\n")
-    
-    f = open(driver_file + ".py", "w")
-    f.write(driver.format(file))
-    f.close()
-
-    return file, modules
+    return tree
