@@ -1,6 +1,6 @@
 # Eve
 
-Eve is a Nateve Programming Language transpiler developed using Nateve.
+Eve is a Nateve Programming Language tokenizer developed using python 3.8
 
 ## Nateve
 
