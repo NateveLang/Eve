@@ -68,6 +68,7 @@ It takes the following arguments:
         
         with open("eve_file_saved.evelog", "w") as f:
             print(tokens, file = f)
+            print("", file = f)
             tree.display(file = f)
 
     return tree

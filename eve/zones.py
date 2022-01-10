@@ -33,7 +33,7 @@ class Zone():
             arrow = ""
 
         elif file != sys.stdout:
-            arrow = "->"
+            arrow = "->  " # Because python files do not support ↳ character
 
         else:
             arrow = "↳  "
@@ -45,14 +45,13 @@ class Zone():
             if type(d) == Zone:
                 d.display(depth + 1)
             else:
-                print((depth + 1) * "    " + arrow + "  " + f"{d.symbol} ({d.ID})", file = file)
+                print((depth + 1) * "    " + arrow + f"{d.symbol} ({d.ID})", file = file)
 
-        print((depth + 1) * "    " + arrow + "  " + 10 * "-", file = file)
+        print((depth + 1) * "    " + arrow + 10 * "-", file = file)
 
         for s in self.statements:
 
             if type(s) == Zone:
                 s.display(depth + 1)
             else:
-                print((depth + 1) * "    " + arrow + "  " + f"{s.symbol} ({s.ID})", file = file)
-                
+                print((depth + 1) * "    " + arrow + f"{s.symbol} ({s.ID})", file = file)
