@@ -35,12 +35,34 @@ import sys
 from eve.error import FileError
 from eve.trees import make_tree
 
+def get_argument(position, plural = False):
+    """
+Get an argument from command line, with a specific position.
+You can get more than one argument, if you set 'plural' to True.
+
+It receives the following arguments:
+    position: The position of the argument in the command line.
+    plural:   If you want to get more than one argument, set it to True.
+"""
+
+    if plural:
+
+        try:
+            return sys.argv[position:]
+        except:
+            return ["none"]
+
+    try:
+        return sys.argv[position]
+    except:
+        return "none"
+
 def main():
     params = sys.argv[:]
 
     if len(params) >= 2:
         file_name = params[1]
-        tree = make_tree(file_name)
+        tree = make_tree(file_name, get_argument(2, True))
         return tree
 
     else:

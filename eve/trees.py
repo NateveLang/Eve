@@ -49,6 +49,7 @@ It takes the following arguments:
 """
 
     dev_mode = "dev" in args
+    save_to_file_mode = "file" in args
 
     text = read_module(file)
     file = file.split(".")[0]
@@ -62,5 +63,11 @@ It takes the following arguments:
     if dev_mode:
         print(tokens)
         tree.display()
+
+    if save_to_file_mode:
+        
+        with open("eve_file_saved.evelog", "w") as f:
+            print(tokens, file = f)
+            tree.display(file = f)
 
     return tree
